@@ -6,28 +6,31 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
+import android.widget.GridView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-public class Bai01ListViewActivity extends AppCompatActivity {
+public class Bai03GridViewActivity extends AppCompatActivity {
+
     private int vitri = -1;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bai01_listview);
+        setContentView(R.layout.activity_bai03_gridview);
 
         //khai báo
-        ListView listView;
+        GridView gridView;
         ArrayList<String> arrayList;
 
         //ánh xạ
-        listView = (ListView) findViewById(R.id.listview1);
-        //Thêm dữ liệu vào ArrayList
+        gridView = (GridView) findViewById(R.id.gridview1);
+        //Thêm dữ liệu vào List
         arrayList = new ArrayList<>();
         arrayList.add("Java");
         arrayList.add("C#");
@@ -35,29 +38,26 @@ public class Bai01ListViewActivity extends AppCompatActivity {
         arrayList.add("Kotlin");
         arrayList.add("Dart");
 
-        // Tạo ArrayAdapter
+        //Tạo ArrayAdapter
         ArrayAdapter adapter = new ArrayAdapter(
-                Bai01ListViewActivity.this,   // Context: màn hình hiện tại (Activity)
-                android.R.layout.simple_list_item_1, // Layout mặc định của Android cho mỗi item trong ListView
-                arrayList  // Dữ liệu nguồn (danh sách các phần tử)
+                Bai03GridViewActivity.this,
+                android.R.layout.simple_list_item_1,
+                arrayList
         );
 
-        //truyền dữ liệu từ adapter ra listview
-        listView.setAdapter(adapter);
+        gridView.setAdapter(adapter);
 
         /*
-        //bắt sự kiện click nhanh trên từng dòng của Listview
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        //bắt sự kiện click nhanh trên từng dòng của Gridview
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //code yêu cầu
-                //i: trả về vị trí click chuột trên ListView -> i ban đầu =0
-                Toast.makeText(Bai01ListViewActivity.this,
-                        "Bạn đang nhấn giữ "+ i + "-" + arrayList.get(i) ,
-                        Toast.LENGTH_SHORT).show();
+                //i: trả về vị trí click chuột trên GridView -> i ban đầu =0
+                Toast.makeText(Bai03GridViewActivity.this, "" + i, Toast.LENGTH_SHORT).show();
             }
         });
-        */
+         */
 
         // ----------------------------------------------------------------------------------------
 
@@ -76,12 +76,12 @@ public class Bai01ListViewActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String name = editText1.getText().toString();
                 arrayList.add(name);
-                adapter.notifyDataSetChanged(); // Thông báo cho Adapter rằng dữ liệu đã thay đổi, để cập nhật lại danh sách hiển thị trên ListView.
+                adapter.notifyDataSetChanged(); // Thông báo cho Adapter rằng dữ liệu đã thay đổi, để cập nhật lại danh sách hiển thị trên GridView.
             }
         });
 
-        //bắt sự kiện trên từng dòng của Listview
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        //bắt sự kiện trên từng dòng của GridView
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //lấy nội dung đua lên edittext
@@ -91,11 +91,11 @@ public class Bai01ListViewActivity extends AppCompatActivity {
         });
 
         btnCapNhat.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              arrayList.set(vitri, editText1.getText().toString());
-              adapter.notifyDataSetChanged();
-          }
+            @Override
+            public void onClick(View view) {
+                arrayList.set(vitri, editText1.getText().toString());
+                adapter.notifyDataSetChanged();
+            }
         });
 
         btnXoa.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +105,5 @@ public class Bai01ListViewActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         });
-
     }
 }

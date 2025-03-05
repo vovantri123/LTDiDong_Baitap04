@@ -15,13 +15,14 @@
         <!--
         .Bai01ListViewActivity
         .Bai02CustomAdapterListViewActivity
-
+        .Bai03GridViewActivity
+        .Bai04CustomAdapterGridViewActivity
 
 
         -->
 
         <activity
-            android:name=".Bai02CustomAdapterListViewActivity"
+            android:name=".Bai04CustomAdapterGridViewActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

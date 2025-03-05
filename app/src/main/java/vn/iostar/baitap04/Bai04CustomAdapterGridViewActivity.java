@@ -3,15 +3,16 @@ package vn.iostar.baitap04;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-public class Bai02CustomAdapterListViewActivity extends AppCompatActivity {
+public class Bai04CustomAdapterGridViewActivity extends AppCompatActivity {
     //khai báo
-    ListView listView;
+    GridView gridView;
     ArrayList<MonHoc> arrayList;
 
     MonHocAdapter adapter;
@@ -22,23 +23,23 @@ public class Bai02CustomAdapterListViewActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bai02_custom_adapter_listview);
+        setContentView(R.layout.activity_bai04_custom_adapter_gridview);
 
         //ánh xạ
         AnhXa();
         //Tạo Adapter
-        adapter = new MonHocAdapter(Bai02CustomAdapterListViewActivity.this,
+        adapter = new MonHocAdapter(Bai04CustomAdapterGridViewActivity.this,
                 R.layout.row_monhoc,
                 arrayList
         );
         //truyền dữ liệu từ adapter ra listview
-        listView.setAdapter(adapter);
+        gridView.setAdapter(adapter);
+
     }
 
     private void AnhXa() {
-        listView = (ListView) findViewById(R.id.listview1);
+        gridView = (GridView) findViewById(R.id.gridview1);
         editText1 = (EditText) findViewById(R.id.editText1);
         btnThem = (Button) findViewById(R.id.btnThem);
         btnCapNhat = (Button) findViewById(R.id.btnCapNhat);

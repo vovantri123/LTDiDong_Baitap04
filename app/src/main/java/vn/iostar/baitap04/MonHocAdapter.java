@@ -26,7 +26,7 @@ public class MonHocAdapter extends BaseAdapter {
     //trả về số dòng
     @Override
     public int getCount() {
-        return monHocList.size(); //lấy kích thước monhoclist
+        return  monHocList == null ? 0 :monHocList.size(); //lấy kích thước monhoclist
     }
 
     @Override
@@ -39,25 +39,27 @@ public class MonHocAdapter extends BaseAdapter {
         return 0;
     }
 
-//    @Override
-//    public View getView(int position, View convertView, ViewGroup parent) {
-//        //lấy context
-//        LayoutInflater inflater = (LayoutInflater)
-//                context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        //gọi view chứa layout
-//        convertView = inflater.inflate(layout,null);
-//        //ánh xạ view
-//        TextView textName = (TextView) convertView.findViewById(R.id.textName);
-//        TextView textDesc = (TextView)  convertView.findViewById(R.id.textDesc);
-//        ImageView imagePic = (ImageView) convertView.findViewById(R.id.imagePic);
-//        //gán giá trị
-//        MonHoc monHoc = monHocList.get(position);
-//        textName.setText(monHoc.getName());
-//        textDesc.setText(monHoc.getDesc());
-//        imagePic.setImageResource(monHoc.getPic());
-//        //trả về view
-//        return convertView;
-//    }
+    /*
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        //lấy context
+        LayoutInflater inflater = (LayoutInflater)
+                context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        //gọi view chứa layout
+        convertView = inflater.inflate(layout,null);
+        //ánh xạ view
+        TextView textName = (TextView) convertView.findViewById(R.id.textName);
+        TextView textDesc = (TextView)  convertView.findViewById(R.id.textDesc);
+        ImageView imagePic = (ImageView) convertView.findViewById(R.id.imagePic);
+        //gán giá trị
+        MonHoc monHoc = monHocList.get(position);
+        textName.setText(monHoc.getName());
+        textDesc.setText(monHoc.getDesc());
+        imagePic.setImageResource(monHoc.getPic());
+        //trả về view
+        return convertView;
+    }
+    */
 
     private class ViewHolder{
         TextView textName,textDesc;
@@ -65,7 +67,12 @@ public class MonHocAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(int i, View view, ViewGroup viewGroup) { // K dùng cái ViewGroup nen dont care
+        // i (position) là vị trí phần tử trong danh sách.
+        // view (convertView) là View cũ được tái sử dụng để hiển thị dữ liệu mới,
+        // viewGroup (parent) là danh sách chứa các View con (ListView, GridView...).
+
+
         //khởi tạo viewholder
         ViewHolder viewHolder;
         //lấy context
@@ -80,6 +87,9 @@ public class MonHocAdapter extends BaseAdapter {
             viewHolder.textDesc = (TextView)  view.findViewById(R.id.textDesc);
             viewHolder.imagePic = (ImageView) view.findViewById(R.id.imagePic);
             view.setTag(viewHolder);
+        // Dùng ViewHolder giup giam so lan goi findViewById(): thay vi tim kiem lai cac thanh phan giao dien moi lan getView() duoc goi,
+        // ViewHolder luu tru cac tham chieu den TextView va ImageView. Giup tang hieu suat va toi uu bo nho
+
         }else{
             viewHolder= (ViewHolder) view.getTag();
         }
