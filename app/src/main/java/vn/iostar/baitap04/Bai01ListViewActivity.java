@@ -6,6 +6,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -84,7 +85,12 @@ public class Bai01ListViewActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //lấy nội dung đua lên edittext
+                // adapterView (parent): GridView hoặc ListView chứa các item.
+                // view: View của item được click.
+                // i (position): Vị trí của item trong danh sách.
+                // l (id): ID của item (thường dùng khi có cơ sở dữ liệu).
+
+                        //lấy nội dung đua lên edittext
                 editText1.setText(arrayList.get(i));
                 vitri = i;
             }

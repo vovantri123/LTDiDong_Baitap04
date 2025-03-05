@@ -14,14 +14,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class MonHocAdapter extends BaseAdapter {
     //khai báo
     private Context context;
     private int layout;
     private List<MonHoc> monHocList;
+
+    public MonHocAdapter(Context context, int layout, List<MonHoc> monHocList) {
+        this.context = context;
+        this.layout = layout;
+        this.monHocList = monHocList;
+    }
 
     //trả về số dòng
     @Override
@@ -80,15 +84,14 @@ public class MonHocAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater)
                     context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             //gọi view chứa layout
-            view = inflater.inflate(layout,null);
+            view = inflater.inflate(layout,null);  // Dùng viewHolder giúp tranh việc LUÔN tạo mới View, gây tốn tài nguyên
             //ánh xạ view
             viewHolder = new ViewHolder();
             viewHolder.textName = (TextView) view.findViewById(R.id.textName);
             viewHolder.textDesc = (TextView)  view.findViewById(R.id.textDesc);
             viewHolder.imagePic = (ImageView) view.findViewById(R.id.imagePic);
             view.setTag(viewHolder);
-        // Dùng ViewHolder giup giam so lan goi findViewById(): thay vi tim kiem lai cac thanh phan giao dien moi lan getView() duoc goi,
-        // ViewHolder luu tru cac tham chieu den TextView va ImageView. Giup tang hieu suat va toi uu bo nho
+        // Mục đích sử dụng ViewHolder, để tái sử dụng View, nhằm tránh việc tạo View mới và findViewById quá nhiều.
 
         }else{
             viewHolder= (ViewHolder) view.getTag();

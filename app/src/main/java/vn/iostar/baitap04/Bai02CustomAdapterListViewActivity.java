@@ -11,14 +11,14 @@ import java.util.ArrayList;
 
 public class Bai02CustomAdapterListViewActivity extends AppCompatActivity {
     //khai báo
-    ListView listView;
-    ArrayList<MonHoc> arrayList;
+    private ListView listView;
+    private MonHocAdapter adapter;
 
-    MonHocAdapter adapter;
+    private ArrayList<MonHoc> arrayList;
 
-    Button btnThem;
-    Button btnCapNhat;
-    EditText editText1;
+    private Button btnThem;
+    private Button btnCapNhat;
+    private EditText editText1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

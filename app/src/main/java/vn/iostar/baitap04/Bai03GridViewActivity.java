@@ -17,8 +17,6 @@ public class Bai03GridViewActivity extends AppCompatActivity {
 
     private int vitri = -1;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
