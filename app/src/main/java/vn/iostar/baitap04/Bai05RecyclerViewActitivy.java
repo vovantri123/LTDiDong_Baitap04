@@ -1,7 +1,6 @@
 package vn.iostar.baitap04;
 
 import android.os.Bundle;
-import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,17 +9,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bai05RecycleViewActitivy extends AppCompatActivity {
+public class Bai05RecyclerViewActitivy extends AppCompatActivity {
     //khai báo
-    private RecyclerView rvSongs;
-    private SongAdapter mSongAdapter;
-    private List<SongModel> mSongs;
+    private RecyclerView rvSongs;  // RecyclerView để hiển thị danh sách bài hát.
+    private SongAdapter mSongAdapter; // Adapter giúp hiển thị dữ liệu lên RecyclerView.
+    private List<SongModel> mSongs; // Danh sách các bài hát.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bai05_recycleview);
+        setContentView(R.layout.activity_bai05_recyclerview);
 
+        // Ánh xạ RecyclerView trong layout với biến rvSongs
         rvSongs = (RecyclerView) findViewById(R.id.rv_songs);
 
         // Create song data
@@ -36,13 +36,12 @@ public class Bai05RecycleViewActitivy extends AppCompatActivity {
         mSongs.add(new SongModel( "68603","CÂU HỎI EM CHƯA TRẢ LỜI", "Cần nơi em 1 lời giải thích thật lòng Dừng lặng im", "Yuki Huy Nam"));
         mSongs.add(new SongModel( "68728","QUA ĐI LẶNG LỄ", "Đôi khi đến với nhau yêu thương chẳng được lâu nhưng khi", "Phan Mạnh Quỳnh"));
         mSongs.add(new SongModel( "60856","QUÊN ANH LÀ DIỂU EM KHÔNG THE - REMIX", "Cần thêm bao lâu để em quên đi niềm đâu Cần thêm", "Thien Ngon"));
-        mSongAdapter = new SongAdapter( this, mSongs);
+        mSongAdapter = new SongAdapter( this, mSongs); // Khởi tạo SongAdapter và truyền this (Context) + danh sách bài hát.
 
 
-        rvSongs.setAdapter(mSongAdapter);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false); // Thử thay thành LinearLayoutManager.HORIZONTAL, kèm sửa file row_item_song.xml để custom item
+        rvSongs.setAdapter(mSongAdapter);  // Gán mSongAdapter vào RecyclerView.
+        // Sử dụng LinearLayoutManager để hiển thị danh sách dọc (VERTICAL).
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false); // Thử thay thành LinearLayoutManager.HORIZONTAL, kèm sửa file row_item_song.xml để custom item
         rvSongs.setLayoutManager(linearLayoutManager);
-
-
     }
 }

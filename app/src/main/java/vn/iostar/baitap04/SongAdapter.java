@@ -13,10 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder> {
-    private static final String TAG = "SongAdapter";
-    private List<SongModel> mSongs;
-    private Context mContext;
-    private LayoutInflater mLayoutInflater;
+    private static final String TAG = "SongAdapter";  // Không thấy dùng
+    private List<SongModel> mSongs;  // Danh sách bài hát
+    private Context mContext;  // Trong Android, Context là một lớp quan trọng cung cấp thông tin về trạng thái hiện tại của ứng dụng. Nó giúp truy cập tài nguyên, khởi chạy activity, hiển thị Toast, và nhiều chức năng khác.
+    private LayoutInflater mLayoutInflater;  // Dùng để "bơm" giao diện từ file XML vào View.
     public SongAdapter(Context context, List<SongModel> datas) {
         mContext = context;
         mSongs = datas;
@@ -25,13 +25,14 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
 
     @Override
     public SongViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        //  dùng để tạo View mới  cho RecyclerView, nếu RecyclerView đã cached lại View thì phương thức này sẽ không được gọi
         // Inflate view from row_item_song.xml
         View itemView = mLayoutInflater.inflate(R.layout.row_item_song, parent, false);
-        return new SongViewHolder(itemView);
+        return new SongViewHolder(itemView);  // Trả về một SongViewHolder để quản lý View đó.
     }
 
     @Override
-    public void onBindViewHolder(SongViewHolder holder, int position) {
+    public void onBindViewHolder(SongViewHolder holder, int position) {  // Dùng để gán dữ liệu vào View
         // Get song in mSong via position
         SongModel song = mSongs.get(position);
         //bind data to viewholder

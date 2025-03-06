@@ -17,12 +17,12 @@
         .Bai02CustomAdapterListViewActivity
         .Bai03GridViewActivity
         .Bai04CustomAdapterGridViewActivity
-        .Bai05RecycleViewActitivy
+        .Bai05RecyclerViewActitivy
 
         -->
 
         <activity
-            android:name=".Bai05RecycleViewActitivy"
+            android:name=".Bai05RecyclerViewActitivy"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -16,9 +16,7 @@ public class Bai02CustomAdapterListViewActivity extends AppCompatActivity {
 
     private ArrayList<MonHoc> arrayList;
 
-    private Button btnThem;
-    private Button btnCapNhat;
-    private EditText editText1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +37,6 @@ public class Bai02CustomAdapterListViewActivity extends AppCompatActivity {
 
     private void AnhXa() {
         listView = (ListView) findViewById(R.id.listview1);
-        editText1 = (EditText) findViewById(R.id.editText1);
-        btnThem = (Button) findViewById(R.id.btnThem);
-        btnCapNhat = (Button) findViewById(R.id.btnCapNhat);
         //Thêm dữ liệu vào List
         arrayList = new ArrayList<>();
         arrayList.add(new MonHoc("Java","Java 1",R.drawable.java));
